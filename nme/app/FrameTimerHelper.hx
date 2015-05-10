@@ -3,7 +3,7 @@ class FrameTimerHelper {
 
     public var framePeriod:Float;
 
-    var render:Bool;
+    var _shouldRender:Bool;
     var last:Float;
 
     public function new():Void {
@@ -11,16 +11,16 @@ class FrameTimerHelper {
 
 
     public function tick(timestamp:Float):Void {
-        if(render)
-            render = false;
+        if(_shouldRender)
+            _shouldRender = false;
         if(timestamp - last >= framePeriod) {
-            render = !render;
+            _shouldRender = true;
+            last = timestamp;
         }
-        last = timestamp;
     }
 
     public function shouldRender():Bool {
-        return render;
+        return _shouldRender;
     }
 }
 

@@ -24,4 +24,11 @@ class TestFrameTimerHelper extends haxe.unit.TestCase
         frameTimer.tick(1234+100);
         assertTrue(frameTimer.shouldRender());
     }
+
+    public function testFarEnoughTickWithTickInBetween() {
+        frameTimer.tick(1234);
+        frameTimer.tick(1234+50);
+        frameTimer.tick(1234+100);
+        assertTrue(frameTimer.shouldRender());
+    }
 }
