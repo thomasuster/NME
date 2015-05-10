@@ -744,7 +744,7 @@ static std::string nmeTitle;
          //printf("NMEView :: No depth/stencil buffer requested. \n");
       }
       
-      //printf("Create OGL window %dx%d\n", backingWidth, backingHeight);
+      printf("Create OGL window %dx%d\n", backingWidth, backingHeight);
       
       // [ddc]
       // code taken from:
@@ -754,6 +754,7 @@ static std::string nmeTitle;
       // Generate and bind our MSAA Frame and Render buffers
       if (multisampling)
       {
+        printf("Multi sampling!");
          glGenFramebuffers(1, &msaaFramebuffer);
          glBindFramebuffer(GL_FRAMEBUFFER, msaaFramebuffer);
          glGenRenderbuffers(1, &msaaRenderBuffer);
