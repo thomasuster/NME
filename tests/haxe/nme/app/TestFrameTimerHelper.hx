@@ -6,6 +6,7 @@ class TestFrameTimerHelper extends haxe.unit.TestCase
     override public function setup():Void {
         frameTimer = new FrameTimerHelper();
         frameTimer.framePeriod = 100;
+        frameTimer.error = 5;
     }
 
     public function testInitialCase() {
@@ -32,10 +33,10 @@ class TestFrameTimerHelper extends haxe.unit.TestCase
         assertTrue(frameTimer.shouldRender());
     }
 
-    public function testFarEnoughTickWithTickInBetween() {
+    public function testBarleyUnderTick() {
         frameTimer.tick(1234);
         frameTimer.tick(1234+50);
-        frameTimer.tick(1234+100);
+        frameTimer.tick(1234+96);
         assertTrue(frameTimer.shouldRender());
     }
 }

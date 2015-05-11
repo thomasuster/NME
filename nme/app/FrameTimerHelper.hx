@@ -2,6 +2,7 @@ package nme.app;
 class FrameTimerHelper {
 
     public var framePeriod:Float;
+    public var error:Float;
 
     var _shouldRender:Bool;
     var last:Float;
@@ -13,7 +14,7 @@ class FrameTimerHelper {
     public function tick(timestamp:Float):Void {
         if(_shouldRender)
             _shouldRender = false;
-        if(timestamp - last >= framePeriod) {
+        if(timestamp - last + error >= framePeriod) {
             _shouldRender = true;
             last = timestamp;
         }
