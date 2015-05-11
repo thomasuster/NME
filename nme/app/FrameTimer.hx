@@ -4,17 +4,18 @@ package nme.app;
 class FrameTimer implements IPollClient
 {
    public var fps(default,set):Float;
-   public var lastRender:Float;
-   public var framePeriod(default,null):Float;
    public var window:Window;
    public var invalid:Bool;
    public var catchup:Bool;
    public var offTarget:Float;
 
+    var helper:FrameTimerHelper;
+
    public function new(inWindow:Window, inFps:Float)
    {
+      helper = new FrameTimerHelper();
+      helper.error = 0.0005;
       fps = inFps;
-      lastRender = 0.0;
       window = inWindow;
       invalid = false;
       catchup = true;
@@ -25,7 +26,7 @@ class FrameTimer implements IPollClient
    function set_fps(inFps:Float)
    {
       fps = inFps;
-      framePeriod = fps > 0 ? 1.0/fps : 0.0;
+      helper.framePeriod = fps > 0 ? 1.0/fps : 0.0;
       return inFps;
    }
 
@@ -35,27 +36,11 @@ class FrameTimer implements IPollClient
       {
          var wasInvalid =invalid;
          invalid = false;
-         if (fps>0 && timestamp >= lastRender - offTarget + framePeriod - 0.0005 ) 
-         {
-            if (catchup)
-            {
-               offTarget = timestamp-(lastRender+framePeriod);
-               if (offTarget>framePeriod)
-                  offTarget = framePeriod;
-               if (offTarget<-framePeriod)
-                  offTarget = -framePeriod;
-            }
-            else
-                offTarget = 0.0;
-
-            lastRender = timestamp;
+         helper.tick(timestamp);
+         if(fps > 0 && helper.shouldRender())
             window.onNewFrame();
-         }
-         else if (wasInvalid)
-         {
-            window.onInvalidFrame();
-         }
-
+//         else if (wasInvalid)
+//            window.onInvalidFrame();
       }
    }
 
@@ -72,10 +57,10 @@ class FrameTimer implements IPollClient
       if (invalid)
          return 0.0;
 
-      if (framePeriod==0.0)
+      if (helper.framePeriod==0.0)
          return defaultWake;
 
-      var next = lastRender + framePeriod - haxe.Timer.stamp();
+      var next = helper.last + helper.framePeriod - haxe.Timer.stamp();
       if (next < defaultWake)
          return next;
 

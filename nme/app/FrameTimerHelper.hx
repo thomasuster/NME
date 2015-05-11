@@ -3,9 +3,9 @@ class FrameTimerHelper {
 
     public var framePeriod:Float;
     public var error:Float;
+    public var last:Float;
 
     var _shouldRender:Bool;
-    var last:Float;
 
     public function new():Void {
     }
