@@ -855,6 +855,11 @@ class NMMLParser
                      project.dependencies.set(key, new Dependency(name,path,extensionPath));
                   }
 
+                case "customIOSProperty":
+                    var key = element.has.key ? substitute(element.att.key) : "";
+                    var value = element.has.value ? substitute(element.att.value) : "";
+                    project.customIOSproperties.set(key, value);
+
                 case "otherLinkerFlags":
                     var value = element.has.value ? substitute(element.att.value) : "";
                     project.otherLinkerFlags.push(value);
