@@ -2095,6 +2095,7 @@ bool nmeIsMain = true;
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+   nme_app_set_active(false);
    APP_LOG(@"applicationDidEnterBackground");
 }
 
