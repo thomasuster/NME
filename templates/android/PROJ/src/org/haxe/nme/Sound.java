@@ -96,8 +96,7 @@ class ManagedMediaPlayer
 	}
 
 	public void stop() {
-		if (mp != null)
-			mp.stop();
+        //http://stackoverflow.com/questions/18224097/android-mediaplayer-nullpointerexception
 		release();
 	}
 
