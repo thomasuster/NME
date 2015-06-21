@@ -91,6 +91,8 @@ namespace nme
             NSData *data,
             int inLoops, float  inOffset, const SoundTransform &inTransform)
         {
+            if(inLoops < 0)
+                inLoops = 0xFFFFFF;
             LOG_SOUND("AVAudioPlayerChannel constructor");
             mSound = inSound;
             // each channel keeps the originating Sound object alive.
