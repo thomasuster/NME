@@ -860,6 +860,10 @@ class NMMLParser
                     var value = element.has.value ? substitute(element.att.value) : "";
                     project.customIOSproperties.set(key, value);
 
+                case "customIOSBlock":
+                    var value = element.has.value ? substitute(element.att.value) : "";
+                    project.customIOSBlock.push(value);
+
                 case "otherLinkerFlags":
                     var value = element.has.value ? substitute(element.att.value) : "";
                     project.otherLinkerFlags.push(value);
