@@ -341,6 +341,8 @@ class MainView extends GLSurfaceView {
           case MotionEvent.ACTION_UP: type = etTouchEnd; break;
           case MotionEvent.ACTION_POINTER_UP: type = etTouchEnd; break;
           case MotionEvent.ACTION_CANCEL: type = etTouchEnd; break;
+          default:
+              return false;
        }
 
        //Log.e("VIEW","Actions : " + action );
