@@ -147,19 +147,8 @@ class Sample extends Sprite
 
       Lib.current.stage.addChild(this);
 
-      var shape = new nme.display.Shape();
-      var gfx = shape.graphics;
-      gfx.beginFill(0xffffff);
-      gfx.lineStyle(1,0x000000);
-      gfx.drawCircle(32,32,30);
-      gfx.endFill();
-      gfx.moveTo(32,32);
-      gfx.lineTo(62,32);
-      var bmp = new BitmapData(64,64,true,0x00000000 );
-      bmp.draw(shape);
 
-      tilesheet = new Tilesheet(bmp);
-      tilesheet.addTileRect( new nme.geom.Rectangle(0,0,64,64), new nme.geom.Point(32,32) );
+      makeTileSheet();
       tid = 0;
 
       particles = [];
@@ -169,8 +158,24 @@ class Sample extends Sprite
       stage.addEventListener( Event.ENTER_FRAME, onEnter );
    }
 
+    function makeTileSheet():Void {
+        var shape = new nme.display.Shape();
+        var gfx = shape.graphics;
+        gfx.beginFill(0xffffff);
+        gfx.lineStyle(1,0x000000);
+        gfx.drawCircle(32,32,30);
+        gfx.endFill();
+        gfx.moveTo(32,32);
+        gfx.lineTo(62,32);
+        var bmp = new BitmapData(64,64,true,0x00000000 );
+        bmp.draw(shape);
+        tilesheet = new Tilesheet(bmp);
+        tilesheet.addTileRect( new nme.geom.Rectangle(0,0,64,64), new nme.geom.Point(32,32) );
+    }
+
    public function onEnter(_)
    {
+       makeTileSheet();
      var data = new Array<Float>();
       var flags = 0;
       particles[0].addSimple(data);
