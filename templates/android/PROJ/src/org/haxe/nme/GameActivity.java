@@ -669,7 +669,6 @@ implements SensorEventListener
       mView.sendActivity(NME.DESTROY);
       if (mVideoView!=null)
          mVideoView.stopPlayback();
-      activity = null;
       super.onDestroy();
    }
 
