@@ -15,16 +15,14 @@ haxelib install nme
 haxelib run nme setup
 ```
 
-To install a specific version: 
-Go to http://nmehost.com/nme
-Download a version, for example nme-5.5.11.zip
-```haxelib install ~/Downloads/nme-5.5.11.zip```
+To install a specific version
+
+1. Go to [NME Host](http://nmehost.com/nme)
+1. Download a version, for example nme-5.5.11.zip
+1. ```haxelib install ~/Downloads/nme-5.5.11.zip```
 
 ### Building applications
 
-NME comes with a custom build tool to configure the application, define the assets and manage the platform settings. The application is configured with a _.nmml file instead of a _.hxml_.
-
-Build applications using one of the build targets:
 ```
 cd nme/samples/DisplayingABitmap
 nme test neko
@@ -41,5 +39,5 @@ nme test ios
 
 ### Learning NME
 
-To learn NME by example, check out the [sample projects](https://github.com/haxenme/nme/tree/master/samples). These are also included in the installation. Every sample project contains the _.hx_ Haxe sources and the _.nmml_ config file to build the example.
+To learn NME by example, check out the [sample projects](https://github.com/haxenme/nme/tree/master/samples). Every sample project contains the _.hx_ Haxe sources and the _.nmml_ config file to build the example.
 
