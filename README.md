@@ -31,7 +31,7 @@ nme test android
 nme test webos
 nme test ios````
 
- *Note:* `nme` is a shortcut to `haxelib run nme`
+ > *Note:* `nme` is a shortcut to `haxelib run nme`
 
 ### Learning NME
 
