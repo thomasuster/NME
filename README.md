@@ -1,11 +1,10 @@
+## Native Media Engine
+
 [![Build Status](https://travis-ci.org/haxenme/nme.png?branch=master)](https://travis-ci.org/haxenme/nme) [![Join the chat at https://gitter.im/haxenme/nme](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/haxenme/nme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-<img src="http://www.nmehost.com/wp-content/uploads/2014/02/nme96.png" align="left" hspace=20/>
-Native Media Engine
+A proven backend for native iOS, Android, Windows, Mac and Linux
 
-NME provides a backend for native iOS, Android, Windows, Mac and Linux applications.
-
-# Installation
+### Installation
 
 Install Haxe](http://www.haxe.org).
 Install [hxcpp](https://github.com/HaxeFoundation/hxcpp):
@@ -25,11 +24,11 @@ haxelib git nme https://github.com/haxenme/nme.git
 ```
 
 To install a precompiled any version:
-1. Go to http://nmehost.com/nme
-1. Download a version, for example nme-5.5.11.zip
-1. ```haxelib install ~/Downloads/nme-5.5.11.zip```
+Go to http://nmehost.com/nme
+Download a version, for example nme-5.5.11.zip
+```haxelib install ~/Downloads/nme-5.5.11.zip```
 
-# Building applications
+### Building applications
 
 NME comes with a custom build tool to configure the application, define the assets and manage the platform settings. The application is configured with a _.nmml file instead of a _.hxml_.
 
@@ -47,7 +46,7 @@ nme test sample.nmml ios
 
  > *Note:* `nme` is a shortcut to `haxelib run nme`
 
-# Learning NME
+### Learning NME
 
 To learn NME by example, check out the [sample projects](https://github.com/haxenme/nme/tree/master/samples). These are also included in the installation. Every sample project contains the _.hx_ Haxe sources and the _.nmml_ config file to build the example.
 
