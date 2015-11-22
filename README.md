@@ -1,41 +1,41 @@
 [![Build Status](https://travis-ci.org/haxenme/nme.png?branch=master)](https://travis-ci.org/haxenme/nme) [![Join the chat at https://gitter.im/haxenme/nme](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/haxenme/nme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-NME
-===
 <img src="http://www.nmehost.com/wp-content/uploads/2014/02/nme96.png" align="left" hspace=20/>
 Native Media Engine
 
-##### NME provides a backend for native iOS, Android, Windows, Mac and Linux applications.
-
----
+NME provides a backend for native iOS, Android, Windows, Mac and Linux applications.
 
 # Installation
 
-Make sure you have installed [Haxe](http://www.haxe.org).
+Install Haxe](http://www.haxe.org).
+Install [hxcpp](https://github.com/HaxeFoundation/hxcpp):
+```
+haxelib install hxcpp
+```
 
-To get the latest released NME version, install via haxelib:  
+To install the latest release:
 ```
 haxelib install nme
 haxelib run nme setup
 ```
 
-Alternative: To install the current git version:  
-`haxelib git nme https://github.com/haxenme/nme.git`
+To install the current git version:  
+```
+haxelib git nme https://github.com/haxenme/nme.git
+```
 
-To install older NME versions:  
-http://nmehost.com/nme
-
-### Dependencies
-
-To build Haxe applications using C++, install [hxcpp](https://github.com/HaxeFoundation/hxcpp) via haxelib:  
-`haxelib install hxcpp` 
+To install a precompiled any version:
+1. Go to http://nmehost.com/nme
+1. Download a version, for example nme-5.5.11.zip
+1. ```haxelib install ~/Downloads/nme-5.5.11.zip```
 
 # Building applications
 
-NME comes with a custom build tool to configure the application, define the assets and manage the platform settings. The application isn't configured using a _.hxml_ file but with a _.nmml_ config file.
+NME comes with a custom build tool to configure the application, define the assets and manage the platform settings. The application is configured with a _.nmml file instead of a _.hxml_.
 
 Build applications using one of the build targets:
 ```
+cd nme/samples/DisplayingABitmap
 nme test sample.nmml windows
 nme test sample.nmml neko
 nme test sample.nmml flash
