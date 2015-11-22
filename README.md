@@ -6,20 +6,15 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 
 ### Installation
 
-1. Install [Haxe](http://www.haxe.org)
-1. Install NME
+Install [Haxe](http://www.haxe.org)
+Install NME
 ```
 haxelib install hxcpp
 haxelib install nme
 haxelib run nme setup
 ```
 
-To install the current git version:  
-```
-haxelib git nme https://github.com/haxenme/nme.git
-```
-
-To install a precompiled any version:
+To install a specific version: 
 Go to http://nmehost.com/nme
 Download a version, for example nme-5.5.11.zip
 ```haxelib install ~/Downloads/nme-5.5.11.zip```
