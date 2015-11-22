@@ -8,12 +8,8 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 
 1. Install [Haxe](http://www.haxe.org)
 1. ```haxelib install hxcpp```
-
-To install the latest release:
-```
-haxelib install nme
-haxelib run nme setup
-```
+1. ```haxelib install nme```
+1. ```haxelib run nme setup```
 
 To install the current git version:  
 ```
