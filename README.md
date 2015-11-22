@@ -11,7 +11,8 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 1. Install NME
 ```haxelib install hxcpp
 haxelib install nme
-haxelib run nme setup```
+haxelib run nme setup
+```
 
 To install a specific version
 
