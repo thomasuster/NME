@@ -6,9 +6,9 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 
 ### Installation
 
-Install [Haxe](http://www.haxe.org)
+1. Install [Haxe](http://www.haxe.org)
 
-Install NME
+1. Install NME
 ```
 haxelib install hxcpp
 haxelib install nme
@@ -27,13 +27,14 @@ NME comes with a custom build tool to configure the application, define the asse
 Build applications using one of the build targets:
 ```
 cd nme/samples/DisplayingABitmap
-nme test sample.nmml windows
-nme test sample.nmml neko
-nme test sample.nmml flash
-nme test sample.nmml cpp
-nme test sample.nmml android
-nme test sample.nmml webos
-nme test sample.nmml ios
+nme test neko
+nme test cpp
+nme test flash
+nme test mac
+nme test windows
+nme test android
+nme test webos
+nme test ios
 ````
 
  > *Note:* `nme` is a shortcut to `haxelib run nme`
