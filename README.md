@@ -6,8 +6,7 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 
 ### Installation
 
-Install Haxe](http://www.haxe.org).
-Install [hxcpp](https://github.com/HaxeFoundation/hxcpp):
+Install [Haxe](http://www.haxe.org)
 ```
 haxelib install hxcpp
 ```
