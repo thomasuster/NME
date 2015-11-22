@@ -9,7 +9,8 @@ A proven backend for native iOS, Android, Windows, Mac and Linux
 1. Install [Haxe](http://www.haxe.org)
 
 1. Install NME
-```haxelib install hxcpp
+```
+haxelib install hxcpp
 haxelib install nme
 haxelib run nme setup
 ```
@@ -22,7 +23,8 @@ To install a specific version
 
 ### Building applications
 
-```cd nme/samples/DisplayingABitmap
+```
+cd nme/samples/DisplayingABitmap
 nme test neko
 nme test cpp
 nme test flash
@@ -30,7 +32,8 @@ nme test mac
 nme test windows
 nme test android
 nme test webos
-nme test ios````
+nme test ios
+````
 
  > *Note:* `nme` is a shortcut to `haxelib run nme`
 
