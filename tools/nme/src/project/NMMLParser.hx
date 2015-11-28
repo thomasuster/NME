@@ -246,7 +246,7 @@ class NMMLParser
       if (element.has.path) 
       {
          var namedPath = substitute(element.att.path);
-         path = basePath + namedPath;
+         path = combine(basePath, namedPath);
 
          if (element.has.rename) 
             targetPath = substitute(element.att.rename);
