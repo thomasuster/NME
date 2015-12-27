@@ -303,7 +303,7 @@ static std::string nmeTitle;
       [self myInit];
       return self;
    }
-   
+
    return nil;
     
 }*/
@@ -1875,6 +1875,13 @@ void NMEStage::OnRedraw()
 
 void NMEStage::OnEvent(Event &inEvt)
 {
+   NSLog(@"NMEStage::OnEvent");
+   if(inEvt.string != NULL) {
+     NSLog(@"string");
+     NSString* string = [NSString stringWithUTF8String:inEvt.string];
+     NSLog(@"%@", string);
+   }
+
    int top = 0;
    gc_set_top_of_stack(&top,false);
 
@@ -2093,7 +2100,16 @@ bool nmeIsMain = true;
          annotation:(id)annotation
 {
     NSLog(@"GOT HERE!");
-    //NSLog([url absoluteString]);
+    NSLog(@"%@", [url absoluteString]);
+    Event evt(etAppLink);
+
+    NSString *s = [url absoluteString];
+    const char *c = [s UTF8String];
+    evt.string = c;
+
+    sgNmeStage->OnEvent(evt);
+
+
 
     /*
     BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
