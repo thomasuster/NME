@@ -68,7 +68,7 @@ class IOSConfig
    public function new()
    {
       compiler =  "clang";
-      deployment =  "5.1.1";
+      deployment =  "7.0";//maybe needed for FB
       deviceConfig =  UNIVERSAL;
       linkerFlags =  "";
       viewTestDir =  "";

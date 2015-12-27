@@ -1,5 +1,6 @@
 package nme;
 
+import haxe.CallStack;
 import nme.display.Bitmap;
 import nme.display.BitmapData;
 import nme.media.Sound;
@@ -116,10 +117,8 @@ class Assets
 
    public static function noId(id:String, type:String)
    {
+       trace(CallStack.toString(CallStack.callStack()));
       trace("[nme.Assets] missing asset '" + id + "' of type " + type);
-      for(key in info.keys())
-         trace(" " + key + " -> " + info.get(key).path );
-      trace("---");
    }
 
    public static function badType(id:String, type:String)

@@ -11,6 +11,7 @@
 #import <QuartzCore/CADisplayLink.h>
 #import <CoreMotion/CMMotionManager.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <Bolts/Bolts.h>
 
 #include <Display.h>
 #include <Surface.h>
@@ -2084,6 +2085,25 @@ bool nmeIsMain = true;
    self.window.rootViewController = c;
    sOnFrame( new IOSViewFrame(c->nmeStage) );
    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    NSLog(@"GOT HERE!");
+    NSLog([url absoluteString]);
+
+    /*
+    BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
+    if ([parsedUrl appLinkData]) {
+        // this is an applink url, handle it here
+        NSURL *targetUrl = [parsedUrl targetURL];
+        NSLog(@"NME GOT URL");
+        NSLog([targetUrl absoluteString]);
+    }
+    */
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
