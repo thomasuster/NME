@@ -293,20 +293,20 @@ static std::string nmeTitle;
 
 //The GL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:
 
-- (id) initWithCoder:(NSCoder*)coder
+/*- (id) initWithCoder:(NSCoder*)coder
 {    
    NSLog(@"NME View init with coder - not supported");
-   /*
+
    if ((self = [super initWithCoder:coder]))
    {
       printf("Init with coder\n");
       [self myInit];
       return self;
    }
-   */
+   
    return nil;
     
-}
+}*/
 
 // For when we init programatically...
 - (id) initWithFrame:(CGRect)frame
@@ -2093,7 +2093,7 @@ bool nmeIsMain = true;
          annotation:(id)annotation
 {
     NSLog(@"GOT HERE!");
-    NSLog([url absoluteString]);
+    //NSLog([url absoluteString]);
 
     /*
     BFURL *parsedUrl = [BFURL URLWithInboundURL:url sourceApplication:sourceApplication];
@@ -2104,6 +2104,7 @@ bool nmeIsMain = true;
         NSLog([targetUrl absoluteString]);
     }
     */
+    return NO;
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
