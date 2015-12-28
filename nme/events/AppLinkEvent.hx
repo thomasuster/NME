@@ -6,7 +6,7 @@ import nme.events.Event;
 @:nativeProperty
 class AppLinkEvent extends Event
 {
-   public static var UPDATE:String;
+   public static var LINK:String;
 
    public var url:String;
 

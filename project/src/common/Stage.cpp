@@ -145,6 +145,7 @@ void Stage::HandleEvent(Event &inEvent)
    if(inEvent.string != NULL) {
      ELOG("Stage::HandleEvent");
      ELOG("%s\n",inEvent.string);
+     //mHandler(inEvent,mHandlerData);
    }
 
    gCurrentStage = this;

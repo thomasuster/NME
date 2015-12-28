@@ -670,6 +670,16 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
       nmeDispatchEvent(evt);
    }
 
+   public function onAppLink(inEvent:AppEvent):Void
+   {
+       trace("MADE IT TO APP LINK");
+       trace(inEvent.string.toString());
+//       trace(inEvent.string.toString());
+//       var evt = new SystemEvent(AppLinkEvent.LINK, false, false);
+//       evt.url = inEvent.string;
+//       nmeDispatchEvent(evt);
+   }
+
    public function onContextLost():Void
    {
       var evt = new Event(Event.CONTEXT3D_LOST);
