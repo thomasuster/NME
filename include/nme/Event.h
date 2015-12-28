@@ -100,7 +100,7 @@ struct Event
    float       scaleX, scaleY;
    int         deltaX, deltaY;
    double      pollTime;
-   const char *string;
+   ::String string;
 };
 
 } // end namespace nme

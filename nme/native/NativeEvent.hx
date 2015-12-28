@@ -1,6 +1,5 @@
 package nme.native;
 
-import cpp.ConstCharStar;
 import nme.native.Include;
 
 
@@ -22,7 +21,7 @@ extern class NativeEvent
    public var deltaX:Float;
    public var deltaY:Float;
    public var pollTime:Float;
-   public var string:ConstCharStar;
+   public var string:String;
 }
 
 
