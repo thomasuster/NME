@@ -45,4 +45,6 @@ class EventId
    public static inline var RenderContextLost =  32;
    public static inline var RenderContextRestored =  33;
 
+   public static inline var AppLink =  34;
+
 }
