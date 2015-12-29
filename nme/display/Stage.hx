@@ -684,7 +684,7 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
    public function onAppLink(inEvent:AppEvent):Void
    {
        trace("MADE IT TO APP LINK");
-       //trace(inEvent.string.toString());
+       trace(inEvent.text);
        //trace(string);
 //       trace(inEvent.string.toString());
 //       var evt = new SystemEvent(AppLinkEvent.LINK, false, false);

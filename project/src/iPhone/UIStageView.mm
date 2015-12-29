@@ -1876,9 +1876,9 @@ void NMEStage::OnEvent(Event &inEvt)
 {
    NSLog(@"NMEStage::OnEvent");
    //if(inEvt.string != NULL) {
-     NSLog(@"string");
-     NSString* string = [NSString stringWithUTF8String:inEvt.utf8Text];
-     NSLog(@"%@", string);
+   //  NSLog(@"string");
+//     NSString* string = [NSString stringWithUTF8String:inEvt.utf8Text];
+  //   NSLog(@"%@", string);
    //}
 
    int top = 0;
