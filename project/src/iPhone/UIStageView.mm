@@ -1875,11 +1875,11 @@ void NMEStage::OnRedraw()
 void NMEStage::OnEvent(Event &inEvt)
 {
    NSLog(@"NMEStage::OnEvent");
-   if(inEvt.string != NULL) {
+   //if(inEvt.string != NULL) {
      NSLog(@"string");
-     NSString* string = [NSString stringWithUTF8String:inEvt.string];
+     NSString* string = [NSString stringWithUTF8String:inEvt.utf8Text];
      NSLog(@"%@", string);
-   }
+   //}
 
    int top = 0;
    gc_set_top_of_stack(&top,false);
@@ -2104,7 +2104,10 @@ bool nmeIsMain = true;
 
     NSString *s = [url absoluteString];
     const char *c = [s UTF8String];
-    evt.string = c;
+    //evt.string = c;
+
+    evt.utf8Text = c;
+    evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0; //setter
 
     sgNmeStage->OnEvent(evt);
 

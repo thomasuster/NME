@@ -142,11 +142,11 @@ void Stage::SetEventHandler(EventHandler inHander,void *inUserData)
 
 void Stage::HandleEvent(Event &inEvent)
 {
-   if(inEvent.string != NULL) {
+   //if(inEvent.string != NULL) {
      ELOG("Stage::HandleEvent");
-     ELOG("%s\n",inEvent.string);
+//     ELOG("%s\n",inEvent.string);
      //mHandler(inEvent,mHandlerData);
-   }
+   //}
 
    gCurrentStage = this;
    DisplayObject *hit_obj = 0;
@@ -276,7 +276,7 @@ void Stage::HandleEvent(Event &inEvent)
       hit_obj->IncRef();
 
    ELOG("if (mHandler)");
-   ELOG("%s\n",inEvent.getString());
+   ELOG("%s\n",inEvent.utf8Text);
 
    if (mHandler)
       mHandler(inEvent,mHandlerData);
