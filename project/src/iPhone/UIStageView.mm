@@ -2105,6 +2105,23 @@ bool nmeIsMain = true;
    return YES;
 }
 
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    NSLog(@"Received link %@", [url absoluteString]);
+    Event evt(etAppLink);
+
+    NSString *s = [url absoluteString];
+    const char *c = [s UTF8String];
+    evt.utf8Text = c;
+    evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
+    sgNmeStage->OnEvent(evt);
+
+    return NO;
+}
+
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
    APP_LOG(@"willFinishLaunchingWithOptions");
