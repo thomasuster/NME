@@ -23,6 +23,7 @@ import nme.events.FocusEvent;
 import nme.events.KeyboardEvent;
 import nme.events.SystemEvent;
 import nme.events.TouchEvent;
+import nme.events.AppLinkEvent;
 import nme.events.Event;
 import nme.geom.Point;
 import nme.geom.Rectangle;
@@ -728,6 +729,13 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
    {
       var evt = new SystemEvent(SystemEvent.SYSTEM, false, false, inEvent.value);
       nmeDispatchEvent(evt);
+   }
+
+   public function onAppLink(inEvent:AppEvent):Void
+   {
+       var evt = new AppLinkEvent(AppLinkEvent.LINK, false, false);
+       evt.url = inEvent.text;
+       nmeDispatchEvent(evt);
    }
 
    public function onContextLost():Void
