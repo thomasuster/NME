@@ -157,6 +157,7 @@ class IOSPlatform extends Platform
       context.OBJC_ARC = false;
       context.PROJECT_DIRECTORY = Sys.getCwd();
       context.APP_FILE = project.app.file;
+      context.PACKAGE = project.app.packageName;
       context.REDIRECT_TRACE = redirectTrace;
       context.IOS_3X_RESOLUTION = project.getBool("ios3xResolution",true);
       context.WATCHOS_DEPLOYMENT_TARGET = "2.2";
