@@ -28,6 +28,7 @@ class IOSPlatform extends Platform
    var linkedLibraries:Array<String>;
 
    var no3xResoltion:Bool;
+   var frameworks:Map<String, Int>;
   
 
    public function new(inProject:NMEProject)
@@ -36,6 +37,7 @@ class IOSPlatform extends Platform
 
       launchPid = 0;
       redirectTrace = false;
+      frameworks = new Map<String, Int>();
 
       for(asset in project.assets) 
          asset.resourceName = asset.targetPath = asset.flatName;
@@ -296,6 +298,9 @@ ${hxcpp_include}';
         if (dependency.isFramework())
         {
            var lib = dependency.getFramework();
+		   if(frameworks.exists(lib))
+               continue;
+           frameworks.set(lib, 0);
            if(dependency.path == '' && false)
            {
               imports.push( "@import " + lib.split(".framework")[0] + ";" );
