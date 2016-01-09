@@ -47,5 +47,7 @@
      		::if value::<true/>::else::<false/>::end::
 		::end::
    	</dict>
+   	<key>UIRequiresFullScreen</key>
+    <true/>
 </dict>
 </plist>
