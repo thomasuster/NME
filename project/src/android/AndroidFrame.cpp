@@ -248,6 +248,17 @@ public:
       HandleEvent(evt);
    }
 
+   void onAppLink(jstring url)
+   {
+      JNIEnv *env = GetEnv();
+      std::string string = JStringToStdString(env, url, true);
+      const char * c = string.c_str();
+      Event evt(etAppLink);
+      evt.utf8Text = c;
+      evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
+      HandleEvent(evt);
+   }
+
    StageVideo *createStageVideo(void *inOwner)
    {
       if (!video)
@@ -937,6 +948,13 @@ JAVA_EXPORT int JNICALL Java_org_haxe_nme_NME_onActivity(JNIEnv * env, jobject o
    return nme::GetResult();
 }
 
+JAVA_EXPORT int JNICALL Java_org_haxe_nme_NME_onAppLink(JNIEnv * env, jobject obj, jstring url)
+{
+   AutoHaxe haxe("onAppLink");
+   if (nme::sStage)
+      nme::sStage->onAppLink(url);
+   return nme::GetResult();
+}
 
 
 } // end extern C
