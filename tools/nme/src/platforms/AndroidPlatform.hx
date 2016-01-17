@@ -402,13 +402,12 @@ class AndroidPlatform extends Platform
    {
       super.updateOutputDir();
 
+      var iconTypes = [ "ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"];
       var destination = getAppDir();
-      PathHelper.mkdir(destination + "/res/drawable-ldpi/");
-      PathHelper.mkdir(destination + "/res/drawable-mdpi/");
-      PathHelper.mkdir(destination + "/res/drawable-hdpi/");
-      PathHelper.mkdir(destination + "/res/drawable-xhdpi/");
-      PathHelper.mkdir(destination + "/res/drawable-xxhdpi/");
-      PathHelper.mkdir(destination + "/res/drawable-xxxhdpi/");
+      for (i in 0...iconTypes.length) {
+        var type = iconTypes[i];
+        PathHelper.mkdir(destination + '/res/drawable-$type/');
+      }
 
       var iconTypes = [ "ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi" ];
       var iconSizes = [ 36, 48, 72, 96, 144, 192 ];
