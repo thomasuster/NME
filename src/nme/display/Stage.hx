@@ -92,6 +92,7 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
    public var stageWidth(get, never):Int;
    public var renderRequest(get,set):Void->Bool;
    public var color(get,set):Int;
+   public var lastLink:String;
 
    var invalid:Bool;
 
@@ -819,6 +820,7 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
    {
        var evt = new AppLinkEvent(AppLinkEvent.LINK, false, false);
        evt.url = inEvent.text;
+       lastLink = evt.url;
        nmeDispatchEvent(evt);
    }
 
