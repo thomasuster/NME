@@ -2117,6 +2117,7 @@ bool nmeIsMain = true;
 
     NSString *s = [url absoluteString];
     const char *c = [s UTF8String];
+    evt.type = etAppLink;
     evt.utf8Text = c;
     evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
     sgNmeStage->OnEvent(evt);
