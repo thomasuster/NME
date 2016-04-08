@@ -26,6 +26,7 @@
 #import <OpenGLES/ES2/glext.h>
 
 #include <StageVideo.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 using namespace nme;
 
@@ -2112,6 +2113,12 @@ bool nmeIsMain = true;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+       openURL:url
+       sourceApplication:sourceApplication
+       annotation:annotation
+     ];
+
     NSLog(@"Received link %@", [url absoluteString]);
     Event evt(etAppLink);
 
@@ -2122,7 +2129,7 @@ bool nmeIsMain = true;
     evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
     sgNmeStage->OnEvent(evt);
 
-    return NO;
+    return handled;
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
