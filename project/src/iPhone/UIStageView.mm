@@ -27,6 +27,7 @@
 
 #include <StageVideo.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKCoreKit/FBSDKAppLinkUtility.h>
 
 using namespace nme;
 
@@ -2080,6 +2081,7 @@ bool nmeIsMain = true;
    UIWindow *window;
    UIViewController *controller;
 }
+- (void)dispatchAppLink:(NSURL *)url;
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *controller;
 
@@ -2090,9 +2092,32 @@ bool nmeIsMain = true;
 
 @synthesize window;
 @synthesize controller;
+BOOL hasLaunched;
+
+- (void)dispatchAppLink:(NSURL *)url
+{
+    NSString * s = [url absoluteString];
+    NSLog(@"Handle link %@", s);
+
+    Event evt(etAppLink);
+    const char *c = [s UTF8String];
+    evt.type = etAppLink;
+    evt.utf8Text = c;
+    evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
+    sgNmeStage->OnEvent(evt);
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    if (launchOptions[UIApplicationLaunchOptionsURLKey] == nil && !hasLaunched) {
+        [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError * err) {
+          if (url) {
+            [self dispatchAppLink:url];
+          }
+        }];
+      }
+    hasLaunched = YES;
+
    APP_LOG(@"application start");
    UIWindow *win = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
    window = win;
@@ -2119,17 +2144,9 @@ bool nmeIsMain = true;
        annotation:annotation
      ];
 
-    NSLog(@"Received link %@", [url absoluteString]);
-    Event evt(etAppLink);
+    [self dispatchAppLink:url];
 
-    NSString *s = [url absoluteString];
-    const char *c = [s UTF8String];
-    evt.type = etAppLink;
-    evt.utf8Text = c;
-    evt.utf8Length = evt.utf8Text ? strlen(evt.utf8Text) : 0;
-    sgNmeStage->OnEvent(evt);
-
-    return handled;
+    return YES;
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions
