@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
+
+<set name="HAXE_ROOT" value="/Users/thomasuster/haxes/haxe_2016-09-30_development_11d218f" />
   
   <meta
      title="WatchApp"
