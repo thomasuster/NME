@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
   
+  <set name="HAXE_ROOT" value="/Users/thomasuster/haxes/haxe_2016-09-30_development_11d218f" />
+
   <meta
      title="Watch Main"
      package="com.nmehost.watch"
@@ -12,12 +14,14 @@
      file="WatchMain" 
      main="Main"
   />
+
+  <set name ="DEVELOPMENT_TEAM" value="5TU6HMNH2W" />
   
   <window
      width="640" 
      height="480" 
      orientation="landscape" 
-     fps="0"
+     fps="60"
      background="0xeeeeee"
      require_shaders="true"
      resizable="true"
