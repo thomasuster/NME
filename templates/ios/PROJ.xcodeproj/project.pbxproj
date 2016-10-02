@@ -782,8 +782,6 @@
             USER_HEADER_SEARCH_PATHS = "::NME_WATCHOS_INCLUDE::";
             ::end::
 				OTHER_LDFLAGS = (
-					::foreach ndlls:: ::if (importStatic==""):: "-l::name::", ::end::
-					::end::
 					::foreach linkedLibraries:: "::__current__::",
 					::end::
 					"-lApplicationMain",
@@ -842,8 +840,6 @@
             USER_HEADER_SEARCH_PATHS = "::NME_WATCHOS_INCLUDE::";
             ::end::
 				OTHER_LDFLAGS = (
-					::foreach ndlls:: ::if (importStatic==""):: "-l::name::", ::end::
-					::end::
 					::foreach linkedLibraries:: "::__current__::",
 					::end::
 					"-lApplicationMain",
