@@ -15,6 +15,7 @@
 *.so
 *.dylib
 *.ndll
+*.hash
 
 # Compiled Static libraries
 *.lai
