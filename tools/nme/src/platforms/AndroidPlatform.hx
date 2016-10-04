@@ -393,8 +393,9 @@ class AndroidPlatform extends Platform
          } catch(e:Dynamic) {}
       }
 
+       trace('here');
       //if (project.androidConfig.minApiLevel < 14)
-         addV4CompatLib(jarDir);
+//         addV4CompatLib(jarDir);
 
       for(k in project.dependencies.keys())
       {
