@@ -461,9 +461,9 @@ class AndroidPlatform extends Platform
          } catch(e:Dynamic) {}
       }
 
+       trace('here');
       //if (project.androidConfig.minApiLevel < 14)
-      if (project.androidConfig.addV4Compat && !gradle)
-         addV4CompatLib(jarDir);
+//         addV4CompatLib(jarDir);
 
       if (gradle)
       {
