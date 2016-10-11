@@ -782,8 +782,6 @@
             USER_HEADER_SEARCH_PATHS = "::NME_WATCHOS_INCLUDE::";
             ::end::
 				OTHER_LDFLAGS = (
-					::foreach linkedLibraries:: "::__current__::",
-					::end::
 					"-lApplicationMain",
 					::IOS_LINKER_FLAGS::
 					::foreach otherLinkerFlags:: "::__current__::",
@@ -840,8 +838,6 @@
             USER_HEADER_SEARCH_PATHS = "::NME_WATCHOS_INCLUDE::";
             ::end::
 				OTHER_LDFLAGS = (
-					::foreach linkedLibraries:: "::__current__::",
-					::end::
 					"-lApplicationMain",
 					::IOS_LINKER_FLAGS::
 					::foreach otherLinkerFlags:: "::__current__::",
