@@ -26,7 +26,7 @@
 #import <OpenGLES/ES2/glext.h>
 
 #include <StageVideo.h>
-#if FACEBOOK
+#ifndef NOFACEBOOK
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKCoreKit/FBSDKAppLinkUtility.h>
 #endif
@@ -2111,7 +2111,7 @@ BOOL hasLaunched;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    #if FACEBOOK
+    #ifndef NOFACEBOOK
     if (launchOptions[UIApplicationLaunchOptionsURLKey] == nil && !hasLaunched) {
         [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError * err) {
           if (url) {
@@ -2142,7 +2142,7 @@ BOOL hasLaunched;
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation
 {
-    #if FACEBOOK
+    #ifndef NOFACEBOOK
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
        openURL:url
        sourceApplication:sourceApplication
