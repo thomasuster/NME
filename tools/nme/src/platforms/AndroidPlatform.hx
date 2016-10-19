@@ -163,12 +163,14 @@ class AndroidPlatform extends Platform
       for(k in project.dependencies.keys())
       {
          var lib = project.dependencies.get(k);
-         if (lib.isAndroidProject() && getAndroidProject(lib)!=extensionApi)
-            context.ANDROID_LIBRARY_PROJECTS.push( {index:idx++, path:getAndroidProject(lib)} );
+         if (lib.isAndroidProject() && getAndroidProject(lib)!=extensionApi) {
+             var libData = {index:idx++, path:getAndroidProject(lib)};
+             context.ANDROID_LIBRARY_PROJECTS.push(libData);
+         }
       }
    }
 
-   public function getAndroidProject(inDep:Dependency)
+   public function getAndroidProject(inDep:Dependency):String
    {
       return "deps/" + inDep.makeUniqueName();
    }
