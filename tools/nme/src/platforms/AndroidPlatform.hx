@@ -201,7 +201,7 @@ class AndroidPlatform extends Platform
       }
    }
 
-   public function getAndroidProject(inDep:Dependency)
+   public function getAndroidProject(inDep:Dependency):String
    {
       return "deps/" + inDep.makeUniqueName();
    }
