@@ -47,7 +47,10 @@
      		::if value::<true/>::else::<false/>::end::
 		::end::
    	</dict>
-   	<key>UIRequiresFullScreen</key>
-    <true/>
+   	<key>UIRequiresFullScreen</key><true/>
+   	<key>NSCalendarsUsageDescription</key>
+    <string>Advertisement would like to create a calendar event.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>Advertisement would like to use camera.</string>
 </dict>
 </plist>
