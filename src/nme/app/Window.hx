@@ -44,7 +44,7 @@ class Window
    {
       appEventHandler = null;
       active = true;
-      autoClear = true;
+      autoClear = false;
  
 
       #if android
