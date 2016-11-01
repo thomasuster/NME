@@ -40,12 +40,13 @@ class Window
 
    public var nmeHandle(default,null):nme.NativeHandle;
    var enterFramePending:Bool;
+   var inFrame:Bool;
 
    public function new(inFrameHandle:Dynamic,inWidth:Int,inHeight:Int)
    {
       appEventHandler = null;
       active = true;
-      autoClear = false;
+      autoClear = true;
  
 
       #if android
@@ -101,19 +102,27 @@ class Window
    {
       if (shouldRenderNow())
       {
-         if (beginRenderImmediate!=null)
-            beginRenderImmediate();
-         beginRender();
-         appEventHandler.onRender(false);
-         endRender();
-         if (endRenderImmediate!=null)
-            endRenderImmediate();
+         _render();
       }
       else
       {
          // On android, we must wait for the redraw before rendering.
       }
    }
+
+    function _render():Void {
+        if(inFrame)
+            return;
+        inFrame = true;
+        if (beginRenderImmediate!=null)
+            beginRenderImmediate();
+        beginRender();
+        appEventHandler.onRender(false);
+        endRender();
+        if (endRenderImmediate!=null)
+            endRenderImmediate();
+        inFrame = false;
+    }
 
 
    function nmeProcessWindowEvent(inEvent:Dynamic)
@@ -167,13 +176,7 @@ class Window
                appEventHandler.onResize(event.x, event.y);
                if (shouldRenderNow())
                {
-                  if (beginRenderImmediate!=null)
-                     beginRenderImmediate();
-                  beginRender();
-                  appEventHandler.onRender(false);
-                  endRender();
-                  if (endRenderImmediate!=null)
-                     endRenderImmediate();
+                   _render();
                }
    
             case EventId.Quit:
