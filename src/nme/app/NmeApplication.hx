@@ -23,7 +23,7 @@ class NmeApplication implements IAppEventHandler implements IPollClient
       window = inWindow;
       window.appEventHandler = this;
       width = inWindow.width;
-      height = inWindow.width;
+      height = inWindow.height;
       fullViewport = [0,0,width,height];
       createFrameTimer();
    }
