@@ -1981,7 +1981,7 @@ bool nmeIsMain = true;
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-   return UIInterfaceOrientationLandscapeLeftMask;
+   return UIInterfaceOrientationLandscapeLeftMask | UIInterfaceOrientationLandscapeRightMask;
 
    int mask = 1;
    bool isOverridden = false;
