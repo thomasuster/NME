@@ -25,6 +25,7 @@ import nme.events.SystemEvent;
 import nme.events.TouchEvent;
 import nme.events.AppLinkEvent;
 import nme.events.Event;
+import nme.events.ErrorEvent;
 import nme.geom.Point;
 import nme.geom.Rectangle;
 import nme.Lib;
@@ -456,6 +457,8 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
 
    public function onUnhandledException(exception:Dynamic, stack:Array<StackItem>):Void
    {
+      var evt:ErrorEvent = new ErrorEvent(ErrorEvent.ERROR,false,false,"Exception: " + exception+"\n" + haxe.CallStack.toString(stack));
+      nmeDispatchEvent(evt);
       trace("Exception: " + exception+"\n" + haxe.CallStack.toString(stack));
       trace("\n\n\n===Terminating===\n.");
       throw "Unhandled exception:" + exception;
