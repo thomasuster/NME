@@ -164,6 +164,10 @@ public:
                point++;
                p = *point;
                break;
+            case pcCubicCurveTo:
+               point+=2;
+               p = *point;
+               break;
          }
          unaligned_prev = p;
          prev = point++;
@@ -340,6 +344,7 @@ public:
                break;
                
             case pcCurveTo:
+            case pcCubicCurveTo:
                {
                   // Gradients pointing from end-point to control point - trajectory
                   //  is initially parallel to these, end cap perpendicular...

@@ -173,6 +173,34 @@ void PolygonRender::CurveExtent(const UserPoint &p0, const UserPoint &p1, const 
    mBuildExtent->Add(p2);
 }
 
+void PolygonRender::CubicCurveExtent(const UserPoint &p0, const UserPoint &p1, const UserPoint &p2, const UserPoint &p3)
+{
+   // B(t) = (1-t)^2p0 + 2(1-t)t p1 + t^2p2
+   // Find maxima/minima : d/dt B(t) = 0
+   //  d/dt x(t) = -2(1-t) p0.x + (2 -4t)p1.x + 2t p2.x = 0
+   //
+   //  -> t 2[  p2.x+p0.x - 2 p1.x ] = 2 p0.x - 2p1.x
+   double denom = p2.x + p0.x - 2 * p1.x;
+   
+   if (denom != 0)
+   {
+      double t = (p0.x - p1.x) / denom;
+      if (t > 0 && t < 1)
+         mBuildExtent->AddX((1 - t) * (1 - t) * p0.x + (2 * t * (1 - t) * p1.x) + (t * t * p2.x));
+   }
+   
+   denom = p2.y + p0.y - 2 * p1.y;
+   
+   if (denom != 0)
+   {
+      double t = (p0.y - p1.y) / denom;
+      if (t > 0 && t < 1)
+         mBuildExtent->AddY((1 - t) * (1 - t) * p0.y + (2 * t * (1 - t) * p1.y) + t * t * p2.y);
+   }
+   mBuildExtent->Add(p0);
+   mBuildExtent->Add(p2);
+}
+
 
 void PolygonRender::Destroy()
 {

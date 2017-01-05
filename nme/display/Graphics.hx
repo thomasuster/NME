@@ -61,6 +61,11 @@ class Graphics
       nme_gfx_curve_to(nmeHandle, inCX, inCY, inX, inY);
    }
 
+   public function cubicCurveTo(inCX1:Float, inCY1:Float, inCX2:Float, inCY2:Float, inX:Float, inY:Float)
+   {
+       nme_gfx_cubic_curve_to(nmeHandle, inCX1, inCY1, inCX2, inCY2, inX, inY);
+   }
+
    public function drawCircle(inX:Float, inY:Float, inRadius:Float) 
    {
       nme_gfx_draw_ellipse(nmeHandle, inX - inRadius, inY - inRadius, inRadius * 2, inRadius * 2);
@@ -181,6 +186,7 @@ class Graphics
    private static var nme_gfx_move_to = Loader.load("nme_gfx_move_to", 3);
    private static var nme_gfx_line_to = Loader.load("nme_gfx_line_to", 3);
    private static var nme_gfx_curve_to = Loader.load("nme_gfx_curve_to", 5);
+   private static var nme_gfx_cubic_curve_to = Loader.load("nme_gfx_cubic_curve_to", -1);
    private static var nme_gfx_arc_to = Loader.load("nme_gfx_arc_to", 5);
    private static var nme_gfx_draw_ellipse = Loader.load("nme_gfx_draw_ellipse", 5);
    private static var nme_gfx_draw_data = Loader.load("nme_gfx_draw_data", 2);
