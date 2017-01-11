@@ -164,6 +164,10 @@ public:
                point++;
                p = *point;
                break;
+            case pcCubicCurveTo:
+               point+=2;
+               p = *point;
+               break;
          }
          unaligned_prev = p;
          prev = point++;
@@ -397,6 +401,63 @@ public:
                   }
                }
                break;
+           case pcCubicCurveTo:
+             {
+                // Gradients pointing from end-point to control point - trajectory
+                //  is initially parallel to these, end cap perpendicular...
+                UserPoint g0 = point[0]-prev;
+                UserPoint g2 = point[1]-point[0];
+             
+                UserPoint perp = g0.Perp(perp_len);
+                UserPoint perp_end = g2.Perp(perp_len);
+             
+               
+                if (points>0)
+                {
+                   if (points>1)
+                      AddJoint(prev,prev_perp,perp);
+                   else
+                      first_perp = perp;
+                }
+             
+                if (fabs(g0.Cross(g2))<0.0001)
+                {
+                   // Treat as line, rather than curve
+                   perp_end = perp;
+             
+                   // Add edges ...
+                   AddLinePart(prev+perp,point[1]+perp,point[1]-perp,prev-perp);
+                   prev = *point;
+                   prev_perp = perp;
+                }
+                else
+                {
+                   // Add curvy bits
+                   if (inMode==itGetExtent)
+                   {
+                      FatCurveExtent(prev, point[0], point[1],perp_len);
+                   }
+                   else if (inMode==itHitTest)
+                   {
+                      HitTestFatCurve(prev, point[0], point[1],perp_len, perp, perp_end);
+                   }
+                   else
+                   {
+                      BuildFatCurve(prev, point[0], point[1],perp_len, perp, perp_end);
+                   }
+                }
+                
+                prev = point[1];
+                prev_perp = perp_end;
+                point +=2;
+                points++;
+                // Implicit loop closing...
+                if (points>2 && prev==first)
+                {
+                   AddJoint(first,perp_end,first_perp);
+                   points = 1;
+                }
+             }
             default:
                point += gCommandDataSize[ mCommands[i] ];
          }

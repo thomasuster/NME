@@ -25,6 +25,9 @@ GraphicsPath::GraphicsPath() : winding(wrOddEven)
             case pcCurveTo:
                gCommandDataSize[i] = 2;
                break;
+           case pcCubicCurveTo:
+               gCommandDataSize[i] = 3;
+               break;
             default:
                gCommandDataSize[i] = 0;
          }
@@ -53,6 +56,17 @@ void GraphicsPath::curveTo(float controlX, float controlY, float anchorX, float 
 	commands.push_back(pcCurveTo);
 	data.push_back(controlX);
 	data.push_back(controlY);
+	data.push_back(anchorX);
+	data.push_back(anchorY);
+}
+
+void GraphicsPath::cubicCurveTo(float controlX1, float controlY1, float controlX2, float controlY2, float anchorX, float anchorY)
+{
+	commands.push_back(pcCubicCurveTo);
+	data.push_back(controlX1);
+	data.push_back(controlY1);
+	data.push_back(controlX2);
+    data.push_back(controlY2);
 	data.push_back(anchorX);
 	data.push_back(anchorY);
 }
@@ -168,6 +182,8 @@ void GraphicsPath::closeLine(int inCommand0, int inData0)
          case pcWideLineTo:
          case pcCurveTo:
             point+=2;
+        case pcCubicCurveTo:
+            point+=3;
          case pcLineTo:
             if (move && move[0]==point[0] && move[1]==point[1])
             {

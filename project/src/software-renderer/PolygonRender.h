@@ -36,6 +36,7 @@ public:
    void HitTestCurve(const UserPoint &inP0, const UserPoint &inP1, const UserPoint &inP2);
    void HitTestFatCurve(const UserPoint &inP0, const UserPoint &inP1, const UserPoint &inP2, double perp_len, const UserPoint &perp0, const UserPoint &perp1);
    void CurveExtent(const UserPoint &p0, const UserPoint &p1, const UserPoint &p2);
+   void CubicCurveExtent(const UserPoint &p0, const UserPoint &p1, const UserPoint &p2, const UserPoint &p3);
    void FatCurveExtent(const UserPoint &p0, const UserPoint &p1, const UserPoint &p2, double perp_len);
    bool Hits(const RenderState &inState);
    void BuildHitTest(const UserPoint &inP0, const UserPoint &inP1);

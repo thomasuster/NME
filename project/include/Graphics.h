@@ -252,6 +252,7 @@ enum PathCommand
    // Quad combining vertices & texture-coords
    pcPointsXY  = 9,
    pcPointsXYRGBA  = 11,
+   pcCubicCurveTo =  12,
 
    pcTile                 = 0x10,
    pcTile_Trans_Bit       = 0x01,
@@ -284,6 +285,7 @@ public:
    void initPosition(const UserPoint &inPos);
 
    void curveTo(float controlX, float controlY, float anchorX, float anchorY);
+   void cubicCurveTo(float controlX1, float controlY1, float controlX2, float controlY2, float anchorX, float anchorY);
    void arcTo(float controlX, float controlY, float anchorX, float anchorY);
    void lineTo(float x, float y);
    void moveTo(float x, float y);
@@ -658,6 +660,7 @@ public:
    void lineTo(float x, float y);
    void moveTo(float x, float y);
    void curveTo(float cx,float cy,float x, float y);
+   void cubicCurveTo(float cx1,float cy1,float cx2,float cy2,float x, float y);
    void arcTo(float cx,float cy,float x, float y);
    void drawPath(const QuickVec<uint8> &inCommands, const QuickVec<float> &inData,
            WindingRule inWinding );

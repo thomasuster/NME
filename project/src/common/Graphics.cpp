@@ -212,6 +212,12 @@ void Graphics::drawPath(const QuickVec<uint8> &inCommands, const QuickVec<float>
             mPathData->curveTo(point->x,point->y,point[1].x,point[1].y);
             mCursor = point[1];
             point += 2;
+            
+        case pcCubicCurveTo:
+            if (point+2==last) break;
+            mPathData->cubicCurveTo(point->x,point->y,point[1].x,point[1].y,point[2].x,point[2].y);
+            mCursor = point[2];
+            point += 3;
       }
    }
    OnChanged();
@@ -403,6 +409,27 @@ void Graphics::curveTo(float cx, float cy, float x, float y)
    }
    else
       mPathData->curveTo(cx,cy,x,y);
+   mCursor = UserPoint(x,y);
+   OnChanged();
+}
+
+void Graphics::cubicCurveTo(float cx1, float cy1, float cx2, float cy2, float x, float y)
+{
+   if ( (mFillJob.mFill && mFillJob.mCommand0==mPathData->commands.size()) ||
+        (mLineJob.mStroke && mLineJob.mCommand0==mPathData->commands.size()) )
+     mPathData->initPosition(mCursor);
+
+   if ( (fabs(mCursor.x-cx1)<0.00001 && fabs(mCursor.y-cy1)<0.00001) ||
+        (fabs(x-cx1)<0.00001 && fabs(y-cy1)<0.00001)  )
+   {
+      if ( (fabs(mCursor.x-cx2)<0.00001 && fabs(mCursor.y-cy2)<0.00001) ||
+              (fabs(x-cx2)<0.00001 && fabs(y-cy2)<0.00001)  )
+         {
+             mPathData->lineTo(x,y);
+         }
+   }
+   else
+      mPathData->cubicCurveTo(cx1,cy1,cx2,cy2,x,y);
    mCursor = UserPoint(x,y);
    OnChanged();
 }

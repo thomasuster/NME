@@ -2752,6 +2752,19 @@ value nme_gfx_curve_to(value inGfx,value inCX, value inCY, value inX, value inY)
 }
 DEFINE_PRIM(nme_gfx_curve_to,5);
 
+value nme_gfx_cubic_curve_to(value *arg, int nargs)
+{
+   enum { inGfx, inCX1, inCY1, inCX2, inCY2, inX, inY };
+   Graphics *gfx;
+   if (AbstractToObject(arg[inGfx],gfx))
+   {
+      CHECK_ACCESS("nme_gfx_cubic_curve_to");
+      gfx->cubicCurveTo( val_number(arg[inCX1]), val_number(arg[inCY1]), val_number(arg[inCX2]), val_number(arg[inCY2]), val_number(arg[inX]), val_number(arg[inY]) );
+   }
+   return alloc_null();
+}
+DEFINE_PRIM_MULT(nme_gfx_cubic_curve_to);
+
 value nme_gfx_arc_to(value inGfx,value inCX, value inCY, value inX, value inY)
 {
    Graphics *gfx;

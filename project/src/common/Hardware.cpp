@@ -871,6 +871,33 @@ public:
                point += 2;
                }
                break;
+           case pcCubicCurveTo:
+               {
+               printf("hardware render");
+               double len = ((last_point-point[0]).Norm() + (point[1]-point[0]).Norm()) * 0.25;
+               if (len!=0)
+               {
+                  int steps = (int)len;
+                  if (steps<3) steps = 3;
+                  if (steps>100) steps = 100;
+                  double step = 1.0/(steps+1);
+                  double t = 0;
+                  for(int s=0;s<steps;s++)
+                  {
+                     t+=step;
+                     double t_ = 1.0-t;
+                     UserPoint p = last_point * (t_*t_) + point[0] * (2.0*t*t_) + point[1] * (t*t);
+                     if (outline.last()!=p)
+                        outline.push_back(p);
+                  }
+                  last_point = point[1];
+                  if (outline.last()!=last_point)
+                      outline.push_back(last_point);
+                  points++;
+               }
+               point += 2;
+               }
+               break;
 
             default:
                points += gCommandDataSize[ inCommands[i] ];

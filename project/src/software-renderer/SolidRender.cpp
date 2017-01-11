@@ -57,6 +57,13 @@ public:
                   mBuildExtent->Add(last);
                   point += 2;
                   break;
+               case pcCubicCurveTo:
+               printf("solid render");
+                  CurveExtent(last, point[0], point[1]);
+                  last = point[2];
+                  mBuildExtent->Add(last);
+                  point += 3;
+                  break;
             }
          }
       }
