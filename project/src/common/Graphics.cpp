@@ -214,7 +214,7 @@ void Graphics::drawPath(const QuickVec<uint8> &inCommands, const QuickVec<float>
             point += 2;
             
         case pcCubicCurveTo:
-            if (point+1==last) break;
+            if (point+2==last) break;
             mPathData->cubicCurveTo(point->x,point->y,point[1].x,point[1].y,point[2].x,point[2].y);
             mCursor = point[2];
             point += 3;
