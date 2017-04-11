@@ -19,7 +19,10 @@ class AssetLib
    public function getBitmapData(id:String):BitmapData return null;
    public function getBytes(id:String):ByteArray return null;
    public function getFont(id:String):Font return null;
-   public function getMovieClip(id:String):MovieClip return null;
+   public function getMovieClip(id:String):MovieClip {
+       trace("Saf function ever");
+       return null;   
+   }
    public function getMusic(id:String):Sound return null;
    public function getPath(id:String):String return null;
    public function getSound(id:String):Sound return null;

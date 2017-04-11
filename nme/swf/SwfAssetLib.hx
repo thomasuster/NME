@@ -43,6 +43,7 @@ class SwfAssetLib extends AssetLib
 
    public override function getMovieClip (id:String):MovieClip
    {
+       trace("I never get here");
       if (id=="")
          return cast loader.content;
       else

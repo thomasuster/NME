@@ -1050,6 +1050,10 @@ Cursor TextField::GetCursor()
 
 void TextField::setText(const WString &inString)
 {
+//    nmeLog("TextField::setText: ");
+//    const char* out = inString.c_str(); 
+//    nmeLog(out);
+    
    Clear();
    CharGroup *chars = new CharGroup;
    chars->mString.Set(inString.c_str(),inString.length());

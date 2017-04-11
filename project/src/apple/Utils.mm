@@ -7,6 +7,7 @@ void NmeLog(const char *inFmt, ...)
    va_list args;
    va_start(args, inFmt);
    NSLogv(str, args);
+   NSLog(str, args);
    va_end(args);
 
 	#ifndef OBJC_ARC

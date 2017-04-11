@@ -588,7 +588,11 @@ class Assets
       } );
    }
 
-
+   public static function unloadLibrary(inLibName:String)
+   {
+       loadedLibraries.remove(inLibName);
+   }
+    
    public static function getLoadedLibrary(inLibName:String) : AssetLib
    {
       if (!loadedLibraries.exists(inLibName))
@@ -619,9 +623,12 @@ class Assets
       var libId = parseLibId(id);
       if (libId!=null)
       {
+          trace('here');
          var lib = getLoadedLibrary(libId[0]);
          if (lib==null)
             return null;
+          trace('and here');
+          trace(Type.getClass(lib));
          return lib.getMovieClip(libId[1]);
       }
 

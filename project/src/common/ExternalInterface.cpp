@@ -3601,6 +3601,7 @@ value nme_text_field_set_text_format(value inText,value inFormat,value inStart,v
    TextField *text;
    if (AbstractToObject(inText,text))
    {
+//      nmeLog("nme_text_field_set_text_format");
       TextFormat *fmt = TextFormat::Create(true);
       SetTextFormat(*fmt,inFormat);
       text->setTextFormat(fmt,val_int(inStart),val_int(inEnd));

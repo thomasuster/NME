@@ -1676,7 +1676,7 @@ double sgWakeUp = 0.0;
 
 NMEStage::NMEStage(CGRect inRect) : nme::Stage(true)
 {
-   APP_LOG(@"new NMEStage");
+   APP_LOG(@"new NMEStage 2");
    video = 0;
    //printf("New NMEStage\n");
 
