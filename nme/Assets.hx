@@ -588,7 +588,11 @@ class Assets
       } );
    }
 
-
+    public static function unloadLibrary(inLibName:String)
+    {
+        loadedLibraries.remove(inLibName);
+    }
+    
    public static function getLoadedLibrary(inLibName:String) : AssetLib
    {
       if (!loadedLibraries.exists(inLibName))
