@@ -73,7 +73,7 @@ class File
 
    // Native Methods
    #if iphone
-   private static var nme_get_resource_path = Loader.load("nme_get_resource_path", 0);
+   public static var nme_get_resource_path = Loader.load("nme_get_resource_path", 0);
    #end
 
    #if !android
