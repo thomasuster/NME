@@ -361,7 +361,7 @@ public:
                buffer = (uint8 *)malloc(pw * dw * dh);
                PixelConvert(dw,dh,
                             fmt, p0, mSurface->GetStride(), mSurface->GetPlaneOffset(),
-                            buffer_format, buffer, dw+pw, dw*dh*pw );
+                            buffer_format, buffer, dw*pw, dw*dh*pw );
 
                glTexSubImage2D(GL_TEXTURE_2D, 0,
                   x0, y0,
