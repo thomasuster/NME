@@ -3,6 +3,7 @@
 	
 	<meta title="Displaying a Bitmap" package="io.nme.samples.displayingabitmap" version="1.0.0" company="NME" />
 	<app main="Main" path="Export" file="DisplayingABitmap" />
+	<haxedef name="NME_HXTELEMETRY" />
 	
 	<source path="Source" />
 	

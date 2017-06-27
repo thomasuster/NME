@@ -143,7 +143,9 @@ class Stage extends DisplayObjectContainer implements nme.app.IPollClient implem
    public function new(inWindow:Window)
    {
       #if HXCPP_TELEMETRY
+       trace('wtf');
       Application.initHxTelemetry();
+       trace('wtf2');
       #end
 
       nmeEnterFrameEvent = new Event(Event.ENTER_FRAME);
