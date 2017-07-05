@@ -1,5 +1,6 @@
 package;
 
+import haxe.io.Error;
 import haxe.io.Path;
 // Can't really use haxe_ver becaise it has been at 4 for over a year
 #if !force_xml_access  // (haxe_ver < 4)
@@ -26,8 +27,18 @@ class NMMLParser
 
    public function new(inProject:NMEProject, path:String, inWarnUnknown:Bool, ?xml:Access )
    {
+      #if profileNMMLParser
+      var start:Float = haxe.Timer.stamp();
+      #end
+       
       project = inProject;
       process(path,inWarnUnknown,xml);
+
+      #if profileNMMLParser
+      var end:Float = haxe.Timer.stamp();
+      var diff:Float = end-start; 
+      Sys.println("NMMLParser time: " + diff);
+      #end
    }
 
    private function filter(text:String, include:Array<String> = null, exclude:Array<String> = null):Bool 
@@ -240,11 +251,18 @@ class NMMLParser
                var name = formatAttributeName(attribute);
                var value = substitute(element.att.resolve(attribute));
 
-               if (Reflect.hasField(project.app, name)) 
-                  Reflect.setField(project.app, name, value);
+               trySetField(project.app, name, value);
          }
       }
    }
+    
+   private function trySetField( o : Dynamic, field : String, value : Dynamic ) : Void {
+       try {
+            Reflect.setField(o, field, value);
+       }
+       catch(e:Dynamic) {}
+   }
+    
 
    private function parseWatchOSElement(element:Access, extensionPath:String):Void 
    {
@@ -486,7 +504,7 @@ class NMMLParser
 
                if (glyphs != null) 
                   asset.glyphs = glyphs;
-
+                
                project.assets.push(asset);
             }
          }
@@ -1100,22 +1118,15 @@ class NMMLParser
                }
 
             case "height", "width", "fps", "antialiasing":
-               if (Reflect.hasField(project.window, name)) 
-                  Reflect.setField(project.window, name, Std.parseInt(value));
+                  trySetField(project.window, name, Std.parseInt(value));
 
             case "parameters", "ui":
                if (name=="ui" && value=="spritekit")
                   project.haxedefs.set("nme_spritekit", "1");
-               if (Reflect.hasField(project.window, name)) 
-                  Reflect.setField(project.window, name, Std.string(value));
+                  trySetField(project.window, name, Std.string(value));
 
             default:
-               if (Reflect.hasField(project.window, name)) 
-                  Reflect.setField(project.window, name, value == "true");
-               else
-               {
-                  //Log.error("Unknown window field: " + name);
-               }
+                  trySetField(project.window, name, value == "true");
          }
       }
    }
