@@ -104,6 +104,8 @@ class PathHelper
    {
       var result = new Array<String>();
 
+      trace(combine(Sys.getEnv("HAXEPATH"), "haxelib") + " " + [ "path", inNameVersion ].join(' '));
+       
       var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "path", inNameVersion ]);
 
       try 
