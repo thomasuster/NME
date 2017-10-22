@@ -208,7 +208,7 @@ class PathHelper
                }
             }
          } catch(e:Dynamic) {
-            trace(e)
+            trace(e);
          };
 
          var code = proc.exitCode();
