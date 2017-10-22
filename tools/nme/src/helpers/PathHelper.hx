@@ -180,7 +180,9 @@ class PathHelper
 
       if (stupidHaxelib)
       {
-         var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "list" ]);
+          var _cmd = combine(Sys.getEnv("HAXEPATH"), "haxelib");
+          var proc = new Process(_cmd, [ "list" ]);
+          trace(_cmd + ' list');
          try 
          {
             while(true) 
@@ -205,9 +207,13 @@ class PathHelper
                   break;
                }
             }
-         } catch(e:Dynamic) { };
+         } catch(e:Dynamic) {
+            trace(e)
+         };
 
          var code = proc.exitCode();
+          trace('code: ' + code);
+          Sys.println("PRINTLN!");
          proc.close();
          if (code!=0)
             result = "";
