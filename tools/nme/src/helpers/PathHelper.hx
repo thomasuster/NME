@@ -186,9 +186,10 @@ class PathHelper
             while(true) 
             {
                var line = proc.stdout.readLine();
-   
+               trace(line);
                if (line.substr(0,haxelib.name.length+1)==haxelib.name+":")
                {
+                  trace('enter');
                   var current = ~/\[(dev:)?(.*)\]/;
                   if (current.match(line))
                   {
