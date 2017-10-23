@@ -114,12 +114,16 @@ class PathHelper
          while(true) 
          {
             var line = proc.stdout.readLine();
+            trace(line);
             result.push(line);
          }
-
-      } catch(e:Dynamic) { };
+          
+      } catch(e:Dynamic) { 
+        trace(e);
+      };
 
       var code = proc.exitCode();
+      trace("the code:" + code);
       proc.close();
 
       if (code!=0)
@@ -153,6 +157,7 @@ class PathHelper
       }
 
       var haxelibPath = getHaxelibPath(name);
+       trace(haxelibPath);
       var result = "";
       var stupidHaxelib = false;
       var seenMinusD = false;
