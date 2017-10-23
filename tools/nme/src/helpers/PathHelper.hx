@@ -109,6 +109,7 @@ class PathHelper
        
       var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "path", inNameVersion ]);
 
+      var code = proc.exitCode();
       try 
       {
          while(true) 
@@ -122,7 +123,7 @@ class PathHelper
         trace(e);
       };
 
-      var code = proc.exitCode();
+      
       trace("the code:" + code);
       proc.close();
 
