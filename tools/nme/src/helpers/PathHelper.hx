@@ -104,10 +104,8 @@ class PathHelper
    public static function getHaxelibPath(inNameVersion:String) : Array<String>
    {
       var result = new Array<String>();
-
-      trace(combine(Sys.getEnv("HAXEPATH"), "haxelib") + " " + [ "path", inNameVersion ].join(' '));
        
-      var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "path", inNameVersion ]);
+      var proc = new Process("haxelib", [ "path", inNameVersion ]);
 
       var code = proc.exitCode();
       try 
