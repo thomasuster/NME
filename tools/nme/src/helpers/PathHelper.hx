@@ -113,16 +113,14 @@ class PathHelper
          while(true) 
          {
             var line = proc.stdout.readLine();
-            trace(line);
             result.push(line);
          }
           
       } catch(e:Dynamic) { 
-        trace(e);
+        
       };
 
       
-      trace("the code:" + code);
       proc.close();
 
       if (code!=0)
@@ -156,7 +154,6 @@ class PathHelper
       }
 
       var haxelibPath = getHaxelibPath(name);
-       trace(haxelibPath);
       var result = "";
       var stupidHaxelib = false;
       var seenMinusD = false;
@@ -186,16 +183,13 @@ class PathHelper
       {
           var _cmd = combine(Sys.getEnv("HAXEPATH"), "haxelib");
           var proc = new Process(_cmd, [ "list" ]);
-          trace(_cmd + ' list');
          try 
          {
             while(true) 
             {
                var line = proc.stdout.readLine();
-               trace(line);
                if (line.substr(0,haxelib.name.length+1)==haxelib.name+":")
                {
-                  trace('enter');
                   var current = ~/\[(dev:)?(.*)\]/;
                   if (current.match(line))
                   {
@@ -212,12 +206,9 @@ class PathHelper
                }
             }
          } catch(e:Dynamic) {
-            trace(e);
          };
 
          var code = proc.exitCode();
-          trace('code: ' + code);
-          Sys.println("PRINTLN!");
          proc.close();
          if (code!=0)
             result = "";
