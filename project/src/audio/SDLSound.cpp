@@ -958,12 +958,17 @@ public:
       duration = 0;
 
       IncRef();
+      ELOG("SDLSound-A");
       if (gSDLAudioState!=sdaNotInit)
       {
+        ELOG("SDLSound-B");
          if (Init())
             loadMusic();
-         else
-            DecRef();
+         else {
+            ELOG("SDLSound-C");
+//            DecRef();
+         }
+         ELOG("SDLSound-D");
       }
    }
 
@@ -1132,10 +1137,13 @@ Sound *CreateSdlSound(const std::string &inFilename,bool inForceMusic)
 Sound *CreateSdlSound(const unsigned char *inData, int len, bool inForceMusic)
 {
    Sound *sound = inForceMusic ? 0 : new SDLSound(inData, len);
+   ELOG("CreateSdlSound-A");
    if (!sound || !sound->ok())
    {
+      ELOG("CreateSdlSound-B");
       if (sound) sound->DecRef();
       sound = new SDLMusic(inData, len);
+      ELOG("Try music");
    }
    #ifdef HX_WINDOWS
    // Try as sound after all...
