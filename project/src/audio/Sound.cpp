@@ -20,6 +20,8 @@ Sound *ReadAndCreate(const std::string &inFilename, bool inForceMusic, factory o
 
 Sound *Sound::FromFile(const std::string &inFilename, bool inForceMusic, const std::string &inEngine)
 {
+   ELOG("inFilename %s", inFilename.c_str() );
+   ELOG("inEngine %s", inEngine.c_str() );
    Sound *result = 0;
 
    #ifdef HX_ANDROID
@@ -42,23 +44,29 @@ Sound *Sound::FromFile(const std::string &inFilename, bool inForceMusic, const s
       result = ReadAndCreate(inFilename, inForceMusic, CreateOpenAlSound);
    #else
 
+   ELOG("FromFile-A");
      #ifdef HX_MACOS
      if (inEngine=="openal")
         result = ReadAndCreate(inFilename, inForceMusic, CreateOpenAlSound);
      else
      #endif
+     ELOG("FromFile-B");
    result = CreateSdlSound(inFilename,inForceMusic);
+   ELOG("FromFile-C");
 
    #endif
 
+    ELOG("FromFile-D");
    if (result && !result->ok())
    {
       result->DecRef();
       result = 0;
    }
+   ELOG("FromFile-E");
 
    if (!result)
       ELOG("Error creating sound from filename %s", inFilename.c_str() );
+  ELOG("FromFile-F");
    return result;
 }
 
