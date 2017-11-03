@@ -700,7 +700,6 @@ class NMEProject
    public function addLib(name:String, version:String="",inNoCopy:Bool)
    {
       var haxelib = findHaxelib(name);
-      Log.mVerbose = true;
       if (haxelib==null)
       {
          Log.verbose("Add library " + name + ":" + version );
