@@ -103,11 +103,10 @@ class PathHelper
    public static function getHaxelibPath(inNameVersion:String) : Array<String>
    {
       var result = new Array<String>();
-
-      trace(combine(Sys.getEnv("HAXEPATH"), "haxelib") + " " + [ "path", inNameVersion ].join(' '));
        
-      var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "path", inNameVersion ]);
+      var proc = new Process("haxelib", [ "path", inNameVersion ]);
 
+      var code = proc.exitCode();
       try 
       {
          while(true) 
@@ -115,10 +114,12 @@ class PathHelper
             var line = proc.stdout.readLine();
             result.push(line);
          }
+          
+      } catch(e:Dynamic) { 
+        
+      };
 
-      } catch(e:Dynamic) { };
-
-      var code = proc.exitCode();
+      
       proc.close();
 
       if (code!=0)
@@ -180,13 +181,13 @@ class PathHelper
 
       if (stupidHaxelib)
       {
-         var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "list" ]);
+          var _cmd = combine(Sys.getEnv("HAXEPATH"), "haxelib");
+          var proc = new Process(_cmd, [ "list" ]);
          try 
          {
             while(true) 
             {
                var line = proc.stdout.readLine();
-   
                if (line.substr(0,haxelib.name.length+1)==haxelib.name+":")
                {
                   var current = ~/\[(dev:)?(.*)\]/;
@@ -204,7 +205,8 @@ class PathHelper
                   break;
                }
             }
-         } catch(e:Dynamic) { };
+         } catch(e:Dynamic) {
+         };
 
          var code = proc.exitCode();
          proc.close();
