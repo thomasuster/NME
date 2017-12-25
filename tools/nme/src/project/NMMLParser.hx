@@ -970,6 +970,9 @@ class NMMLParser
                 case "customIOSBlock":
                     var value = element.has.value ? substitute(element.att.value) : "";
                     project.customIOSBlock.push(value);
+                case "haxelibIOSPath":
+                    var value = element.has.value ? substitute(element.att.value) : "";
+                    project.haxelibIOSPath = value;
                 case "frameworkSearchPaths":
                     var value = element.has.value ? substitute(element.att.value) : "";
                     var full = FileSystem.fullPath(value);

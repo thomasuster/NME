@@ -147,6 +147,7 @@ class NMEProject
    public var customIOSproperties:Map<String,String>;
    public var frameworkSearchPaths:Array<String>;
    public var customIOSBlock:Array<String>;
+   public var haxelibIOSPath:String;
    // For decoding assets
    public var libraryHandlers:Map<String,String>;
    // Additional files to be copied into andoird project
@@ -209,6 +210,7 @@ class NMEProject
       otherLinkerFlags = [];
       customIOSproperties = new Map<String, String>();
       customIOSBlock = [];
+      haxelibIOSPath = 'haxelib';
       frameworkSearchPaths = [];
       haxedefs = new Map<String,String>();
       haxeflags = new Array<String>();
