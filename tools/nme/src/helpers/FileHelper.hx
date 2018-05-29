@@ -160,7 +160,7 @@ class FileHelper
       }
       else
       {
-         LogHelper.info("", " - Copying file: " + source + " -> " + destination);
+//         LogHelper.info("", " - Copying file: " + source + " -> " + destination);
          LogHelper.info("", ".");
          var code = Sys.command("cp", [source, destination]);
          if (code!=0)
