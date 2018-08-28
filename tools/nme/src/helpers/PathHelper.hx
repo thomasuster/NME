@@ -108,7 +108,7 @@ class PathHelper
 
       var haxelibPath = "haxelib";
       Sys.println("!!!!!" + Sys.getEnv("HAXELIB_PATH") + "!!!!!");
-      if(Sys.getEnv("HAXELIB_PATH"))
+      if(Sys.getEnv("HAXELIB_PATH") != null)
           haxelibPath = Sys.getEnv("HAXELIB_PATH");
       var proc = new Process(haxelibPath, [ "path", inNameVersion ]);
 
