@@ -1,5 +1,6 @@
 package;
 
+import nme.system.System;
 import sys.io.Process;
 import sys.FileSystem;
 import platforms.Platform;
@@ -104,8 +105,12 @@ class PathHelper
    public static function getHaxelibPath(inNameVersion:String) : Array<String>
    {
       var result = new Array<String>();
-       
-      var proc = new Process("haxelib", [ "path", inNameVersion ]);
+
+      var haxelibPath = "haxelib";
+      Sys.println("!!!!!" + Sys.getEnv("HAXELIB_PATH") + "!!!!!");
+      if(Sys.getEnv("HAXELIB_PATH"))
+          haxelibPath = Sys.getEnv("HAXELIB_PATH");
+      var proc = new Process(haxelibPath, [ "path", inNameVersion ]);
 
       var code = proc.exitCode();
       try 
