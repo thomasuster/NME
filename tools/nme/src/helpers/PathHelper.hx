@@ -154,6 +154,10 @@ class PathHelper
       }
 
       var haxelibPath = getHaxelibPath(name);
+      if(Sys.getEnv("HAXELIB_PATH")) {
+          Sys.println("!!!!" + Sys.getEnv("HAXELIB_PATH") + "!!!!");
+          haxelibPath = Sys.getEnv("HAXELIB_PATH");
+      }
       var result = "";
       var stupidHaxelib = false;
       var seenMinusD = false;
