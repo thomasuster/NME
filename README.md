@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/haxenme/nme.png?branch=master)](https://travis-ci.org/haxenme/nme) [![Join the chat at https://gitter.im/haxenme/nme](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/haxenme/nme?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 <img src="http://www.nmehost.com/wp-content/uploads/2014/02/nme96.png" align="left" />
-![nme logo](./assets/icons/nme.svg)
+![nme logo](assets/icons/nme.svg)
 
 ## Native Media Engine
 
