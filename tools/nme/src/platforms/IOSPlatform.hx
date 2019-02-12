@@ -239,6 +239,8 @@ ${hxcpp_include}';
       }
       context.CUSTOM_BLOCKS = blocks;
 
+      context.HAXELIB_IOS_PATH = project.haxelibIOSPath;
+
       var requiredCapabilities = [];
 
       if (hasArch(ARMV7) && !hasArch(ARMV6))

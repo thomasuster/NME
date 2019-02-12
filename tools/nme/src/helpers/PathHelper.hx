@@ -1,5 +1,6 @@
 package;
 
+import nme.system.System;
 import sys.io.Process;
 import sys.FileSystem;
 import platforms.Platform;
@@ -104,8 +105,13 @@ class PathHelper
    {
       var result = new Array<String>();
 
-      var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "path", inNameVersion ]);
+      var haxelibPath = "haxelib";
+      Sys.println("!!!!!" + Sys.getEnv("HAXELIB_PATH_ALT") + "!!!!!");
+      if(Sys.getEnv("HAXELIB_PATH_ALT") != null)
+          haxelibPath = Sys.getEnv("HAXELIB_PATH_ALT");
+      var proc = new Process(haxelibPath, [ "path", inNameVersion ]);
 
+      var code = proc.exitCode();
       try 
       {
          while(true) 
@@ -113,10 +119,12 @@ class PathHelper
             var line = proc.stdout.readLine();
             result.push(line);
          }
+          
+      } catch(e:Dynamic) { 
+        
+      };
 
-      } catch(e:Dynamic) { };
-
-      var code = proc.exitCode();
+      
       proc.close();
 
       if (code!=0)
@@ -178,13 +186,13 @@ class PathHelper
 
       if (stupidHaxelib)
       {
-         var proc = new Process(combine(Sys.getEnv("HAXEPATH"), "haxelib"), [ "list" ]);
+          var _cmd = combine(Sys.getEnv("HAXEPATH"), "haxelib");
+          var proc = new Process(_cmd, [ "list" ]);
          try 
          {
             while(true) 
             {
                var line = proc.stdout.readLine();
-   
                if (line.substr(0,haxelib.name.length+1)==haxelib.name+":")
                {
                   var current = ~/\[(dev:)?(.*)\]/;
@@ -202,7 +210,8 @@ class PathHelper
                   break;
                }
             }
-         } catch(e:Dynamic) { };
+         } catch(e:Dynamic) {
+         };
 
          var code = proc.exitCode();
          proc.close();
